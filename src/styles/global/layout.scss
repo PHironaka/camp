@@ -1,0 +1,120 @@
+/*================ General layout styles ================*/
+body,
+html {
+  background-color: $color-body;
+  font-family:lucida grande;
+}
+
+.page-width {
+  @include clearfix();
+  max-width: $width-site;
+  padding: 0 $gutter;
+  margin: 0 auto;
+}
+
+.container {
+	    width: 90%;
+    max-width: 66em;
+    display: grid;
+    margin: 0 auto;
+    grid-column-gap: 2rem;
+    grid-row-gap: 2rem;
+    grid-template-columns: 1fr;
+}
+
+#MainContent {
+	display:grid;
+	grid-template-columns: 1fr 2fr 1fr;
+	grid-gap: 4em;
+	aside.left {
+	li {
+	list-style:none;
+
+	}
+	}
+
+	aside {
+
+	img {
+	width:180px;
+	margin-bottom: 2em;
+	}
+
+	ul {
+	padding:0;
+	}
+
+	h2 {
+	font-size:1em;
+	padding:0 0 10px;
+	border-bottom: 1px solid;
+	}
+
+	a {
+	text-decoration:none;
+	color:black;
+	font-weight:bold;
+    font-size: .8em;
+	
+	}
+
+	}
+
+	h4 {
+	margin:10px 0 0;
+	font-size:.8em;
+	}
+	a{
+	text-decoration:none;
+	color:black;
+	font-weight:bold;
+	p {
+	margin:0;
+	}
+	
+	}
+.product-post {
+	margin-bottom: 2em;
+}
+
+	.product-image {
+	display:grid;
+	    grid-template-columns: 1fr 1fr ;
+	    grid-gap:1em;
+	    
+      @media screen and (max-width: 800px) {
+  grid-template-columns:  1fr;
+   
+}
+
+
+
+	}
+
+}
+#product-post {
+	display:grid;
+	    grid-template-columns:  2fr 1fr;
+	    grid-gap:1em;
+      @media screen and (max-width: 800px) {
+  grid-template-columns:  1fr;
+   
+}
+}
+.product-post--images {
+	display:grid;
+	    grid-template-columns: 1fr;
+	    grid-gap:1em;
+}
+
+.product-post--price {
+	font-weight:bold;
+	margin-bottom:1em;
+}
+
+button {
+	background:transparent;
+	outline:none;
+	border:none;
+	min-width:100px;
+}
