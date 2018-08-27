@@ -25,7 +25,7 @@
       {% for link in linklists.campmain.links %}
         {% if link.links != blank %}
           <li>
-            <a href="{{ link.url }}">{{ link.title | escape }}</a>
+            <a href="{{ link.url }}" class="nav-links">{{ link.title | escape }}</a>
             <ul>
               {% for childlink in link.links %}
                 {% if childlink.links != blank %}
@@ -65,14 +65,14 @@
              name="q"
              id="Search"
              value="{{ search.terms | escape }}"
-             placeholder="{{ 'general.search.placeholder' | t }}">
+             ">
       <button type="submit" class="btn">
         {% include 'search' %}
         <span class="icon-fallback-text">{{ 'general.search.submit' | t }}</span>
       </button>
     </form>
     <a href="/cart">
-      | {{ 'layout.cart.title' | t }}
+     {{ 'layout.cart.title' | t }}
       ({{ cart.item_count }} )
     </a>
 
@@ -81,6 +81,58 @@
     </div>
   </nav>
 
+  <div class="modal-box mobile">
+        <button href="#" class="close " role="button" >
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+
+        </button>
+      <div class="menu">
+
+   <nav role="navigation">
+    <ul class="site-nav">
+
+
+
+      {% for link in linklists.campmain.links %}
+        {%- assign child_list_handle = link.title | handleize -%}
+        {% if menus[child_list_handle].links != blank %}
+          <li class="site-nav--has-submenu{% if link.active %} site-nav--active{% endif %} ">
+            <a href="{{ link.url }}" class="site-nav__link" name="{{ link.title }}">
+              {{ link.title }}
+            </a>
+            
+          </li>
+          <ul class="site-nav__submenu">
+
+              {% for childlink in menus[child_list_handle].links %}
+                <li {% if childlink.active %}class="site-nav--active"{% endif %}>
+                  <a href="{{ childlink.url }}" class="site-nav__link" name="{{ link.title }}">{{ childlink.title | escape }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+        {% else %}
+          <li class="subNav-item {% if link.active %}site-nav--active {% endif %}">
+            <a href="{{ link.url }}" class="site-nav__link" name="{{ link.title }}">{{ link.title }}</a>
+          </li>
+        {% endif %}
+      {% endfor %}
+    
+    </ul>
+  </nav>
+      </div>
+      <div class="overlay"></div>
+   </div>  
+
+<div class="mobile-nav--button">
+        <button  class="mobile-menu">
+<svg width="31px" height="19px" viewBox="0 0 31 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"><g id="align-justify-(1)" transform="translate(1.000000, 1.000000)" stroke="#000000" stroke-width="2"><path d="M29,8 L0,8" id="Shape"></path><path d="M29,0 L0,0" id="Shape"></path><path d="M29,17 L0,17" id="Shape"></path></g></g></svg>
+        </button>
+
+
+
+
+
+</div>  
   </header>
 
  

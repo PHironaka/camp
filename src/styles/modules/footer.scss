@@ -3,6 +3,9 @@ footer {
 	grid-template-columns:200px 1fr;
 	margin: 1em 0;
 	padding: 1em 0;
+    font-family: 'woodsticks', serif;
+    font-size:1em;
+    font-weight:bold;
 	border-top:1px solid;
 	ul {
 	    justify-self: right;
@@ -11,6 +14,11 @@ footer {
     display: grid;
     grid-template-columns: 108px 76px 106px 1fr;
     list-style: none;
+
+    li {
+    border-right: 2px solid;
+    padding: 0 13px;
+    }
 
     a{
     color:black;

@@ -1,6 +1,12 @@
 {% paginate search.results by 10 %}
 
-  <h1>
+
+
+{% if search.performed %}
+
+<div>
+
+  <p>
     {% if search.performed %}
       {% if search.results_count == 0 %}
         {{ 'general.search.no_results_html' | t: terms: search.terms }}
@@ -10,32 +16,19 @@
     {% else %}
       {{ 'general.search.title' | t }}
     {% endif %}
-  </h1>
-
-  <form action="/search" method="get" role="search">
-    <label for="Search" class="label-hidden">
-      {{ 'general.search.placeholder' | t }}
-    </label>
-    <input type="search"
-           name="q"
-           id="Search"
-           value="{{ search.terms | escape }}"
-           placeholder="{{ 'general.search.placeholder' | t }}">
-    <button type="submit" class="btn">
-      {% include 'icon-search' %}
-      <span class="icon-fallback-text">{{ 'general.search.submit' | t }}</span>
-    </button>
-  </form>
-
-
-{% if search.performed %}
+  </p>
     <ul>
       {% for item in search.results %}
         <li>
           {% assign featured_image = item.image | default: item.featured_image %}
           {% if featured_image != blank %}
             <a href="{{ item.url | within: collection }}" title="{{ item.title | escape }}">
-              {{ featured_image | img_url: '240x240' | img_tag: featured_image.alt }}
+              <div class="product-image">
+        <img src="{{ featured_image.src | img_url: 'large' }}" alt="{{ featured.featured_image.alt | escape }}">
+     {% for image in item.images %}
+            <img src="{{ image.src | img_url: 'master' }}" alt="{{ image.alt | escape }}">
+      {% endfor %}
+</div>
             </a>
           {% endif %}
 
@@ -70,9 +63,10 @@
           {% endif %}
 
         </li>
+
       {% endfor %}
     </ul>
-
+</div>
     {% if paginate.pages > 1 %}
       {% include 'pagination' %}
     {% endif %}

@@ -42,7 +42,7 @@
     <form action="/cart/add" method="post" enctype="multipart/form-data">
       {% unless product.has_only_default_variant %}
         {% for option in product.options_with_values %}
-          <div class="selector-wrapper js">
+          <div class="selector-wrapper js {{ option.name }}">
             <label for="SingleOptionSelector-{{ forloop.index0 }}">
               {{ option.name }}
             </label>
@@ -75,12 +75,12 @@
       </select>
 
 
-      <button class="btn"
+      <button class="btn product-page"
         type="submit"
         name="add"
         data-add-to-cart
         {% unless current_variant.available %}disabled="disabled"{% endunless %}>
-        {% include 'add-to-cart' %}
+        <img src="https://cdn.shopify.com/s/files/1/0014/8648/7629/files/atc.png?14489363389593644430" />
           
       </button>
     </form>
